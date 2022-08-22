@@ -45,11 +45,15 @@ namespace CryptCurrTrack.Model
 
     class CurrencyDetails
     {
-
+        public string Name;
+        public string Price;
+        public string Volume;
+        public string PriceChange;
     }
 
     class MarketPrices
     {
-
+        public string Market;
+        public string Price;
     }
 }

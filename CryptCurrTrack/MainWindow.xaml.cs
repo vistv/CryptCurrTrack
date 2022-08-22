@@ -54,9 +54,9 @@ namespace CryptCurrTrack
             
         }
 
-        public void OpenCurrencyDetailWindow(string itemClickedId)
+        public void OpenCurrencyDetailWindow(string itemClickedRank, TopCurrenciesList currencyInfo)
         {
-            Page currencyDetailView = new CurrencyDetailView(itemClickedId);
+            Page currencyDetailView = new CurrencyDetailView(itemClickedRank, currencyInfo);
             Main.Content = currencyDetailView;
         }
 

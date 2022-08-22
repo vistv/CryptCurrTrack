@@ -3,7 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:CryptCurrTrack.View"
+      xmlns:local="clr-namespace:CryptCurrTrack.View" 
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="CurrencyDetailView">
@@ -17,13 +17,13 @@
         
         <TextBlock Text="Cryptocurrency details:" FontSize="14" Grid.Row="0" HorizontalAlignment="Center" Margin="0,30,0,0"/>
 
-        <ListView Name="CurrencyDetails" Grid.Row="1" Margin="180,10,180,60" ItemsSource="{Binding Details}">
+        <ListView Name="CurrencyDetails" Grid.Row="1" Margin="180,10,180,10" ItemsSource="{Binding Details}">
             <ListView.View>
                 <GridView x:Name="grdCurr">
-                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}"  Width="100"/>
-                    <GridViewColumn Header="Price" DisplayMemberBinding="{Binding Price}"  Width="100" />
-                    <GridViewColumn Header="Volume" DisplayMemberBinding="{Binding Volume}"  Width="100" />
-                    <GridViewColumn Header="Price change" DisplayMemberBinding="{Binding PriceChange}"  Width="140" />
+                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Details.Name}"  Width="100"/>
+                    <GridViewColumn Header="Price" DisplayMemberBinding="{Binding Details.Price}"  Width="100" />
+                    <GridViewColumn Header="Volume" DisplayMemberBinding="{Binding Details.Volume}"  Width="100" />
+                    <GridViewColumn Header="Price change" DisplayMemberBinding="{Binding Details.PriceChange}"  Width="140" />
                     
                 </GridView>
             </ListView.View>
@@ -32,8 +32,8 @@
         <ListView Name="MarketsPrices" Grid.Row="2" Margin="265,10,254,25" ItemsSource="{Binding Markets}"> 
             <ListView.View>
                 <GridView x:Name="grdMark">
-                    <GridViewColumn Header="Market" DisplayMemberBinding="{Binding Rank}"  Width="100"/>
-                    <GridViewColumn Header="Price" DisplayMemberBinding="{Binding Id}"  Width="50" />
+                    <GridViewColumn Header="Market" DisplayMemberBinding="{Binding Market}"  Width="100"/>
+                    <GridViewColumn Header="Price" DisplayMemberBinding="{Binding Price}"  Width="50" />
                     
                 </GridView>
             </ListView.View>

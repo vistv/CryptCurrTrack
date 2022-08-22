@@ -21,11 +21,11 @@ namespace CryptCurrTrack.View
     {
 
         private readonly CurrencyDetail_ViewModel viewModel;
-        public CurrencyDetailView(string currencyId)
+        public CurrencyDetailView(string currencyId, TopCurrenciesList topCurrenciesList)
         {
             InitializeComponent();
 
-            viewModel = new CurrencyDetail_ViewModel(currencyId);
+            viewModel = new CurrencyDetail_ViewModel(currencyId, topCurrenciesList);
 
             DataContext = viewModel;
             viewModel.Initialize();

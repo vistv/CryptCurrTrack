@@ -44,7 +44,7 @@ namespace CryptCurrTrack.View
             var itemClicked = ((FrameworkElement)e.OriginalSource).DataContext as MainWindow_Model;
             if (itemClicked != null)
             {
-                ((MainWindow)System.Windows.Application.Current.MainWindow).OpenCurrencyDetailWindow(itemClicked.Id);
+                ((MainWindow)System.Windows.Application.Current.MainWindow).OpenCurrencyDetailWindow(itemClicked.Rank, _viewModel.GetTopCurrenciesList());
             }
         }
     }

@@ -13,7 +13,13 @@ namespace CryptCurrTrack
     {
         private IList<MainWindow_Model> _CryptList;
         private TopCurrenciesList topCurr;
-        private const int listCount = 20;
+        private const int listCount = 100;
+
+        public TopCurrenciesList GetTopCurrenciesList()
+        {
+            return topCurr;
+        }
+
         public MainWindow_ViewModel()
         {
             _CryptList = new List<MainWindow_Model> { };
@@ -27,9 +33,9 @@ namespace CryptCurrTrack
         public IList<MainWindow_Model> CryptList
         {
             get { return _CryptList; }
-            set { _CryptList = value; }
+   //         set { _CryptList = value; }
         }
-               
+
         public async void Initialize()
         {
             await HttpInfor.GetHttpData("https://api.coincap.io/v2/assets?limit=" + listCount.ToString());
