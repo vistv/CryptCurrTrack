@@ -12,7 +12,7 @@ namespace CryptCurrTrack
     {
         private IList<MainWindow_Model> _CryptList;
         private TopCurrenciesList topCurr;
-        private const int listCount = 12;
+        private const int listCount = 20;
         public MainWindow_ViewModel()
         {
             _CryptList = new List<MainWindow_Model> { };

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using CryptCurrTrack.View;
 
 namespace CryptCurrTrack
 {
@@ -20,14 +21,37 @@ namespace CryptCurrTrack
     /// </summary>
     public partial class MainWindow : Window
     {
-        private readonly MainWindow_ViewModel _viewModel;
+
+        private Page topCurrencyView;
+        private Page searchView;
+        private Page exchangeView;
         public MainWindow()
         {
             InitializeComponent();
-            _viewModel = new MainWindow_ViewModel();
-            // The DataContext serves as the starting point of Binding Paths
-            DataContext = _viewModel;
-            _viewModel.Initialize();
+            if (topCurrencyView == null) topCurrencyView = new TopCurrencyView();
+            Main.Content = topCurrencyView;
+        }
+
+        private void ButtonMain_Click(object sender, RoutedEventArgs e)
+        {
+            
+            if (topCurrencyView == null) topCurrencyView = new TopCurrencyView();
+            Main.Content = topCurrencyView;
+        }
+
+        private void ButtonSearch_Click(object sender, RoutedEventArgs e)
+        {
+
+            if (searchView == null) searchView = new SearchView();
+            Main.Content = searchView;
+            
+        }
+
+        private void ButtonExchange_Click(object sender, RoutedEventArgs e)
+        {
+            if (exchangeView == null) exchangeView = new ExchangeView();
+            Main.Content = exchangeView;
+            
         }
     }
 }

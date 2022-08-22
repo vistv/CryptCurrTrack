@@ -3,8 +3,19 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:CryptCurrTrack"
+        xmlns:local="clr-namespace:CryptCurrTrack" 
+        xmlns:views="clr-namespace:CryptCurrTrack.View"
         mc:Ignorable="d"
-        Title="MainWindow" Height="489" Width="869">
-  
+        Title="MainWindow" Height="600" Width="800">
+
+    <Grid>
+        <StackPanel Orientation="Horizontal" Height="35" VerticalAlignment="Top">
+            <Button Content="Top Cryptocurrency List" Width="150" Margin="10,0,0,0" Click="ButtonMain_Click"/>
+            <Button Content="Search" Width="150" Margin="10,0,0,0" Click="ButtonSearch_Click"/>
+            <Button Content="Exchange" Width="150" Margin="10,0,0,0" Click="ButtonExchange_Click"/>
+        </StackPanel>
+        <Frame x:Name="Main" Margin="0,35,0,0" NavigationUIVisibility="Hidden"/>
+    </Grid>
+
+
 </Window>

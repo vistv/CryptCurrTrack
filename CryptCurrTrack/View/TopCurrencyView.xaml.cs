@@ -13,14 +13,27 @@ using System.Windows.Shapes;
 
 namespace CryptCurrTrack.View
 {
-    /// <summary>
-    /// Interaction logic for TopCurView.xaml
-    /// </summary>
-    public partial class TopCurView : Page
+    
+    public partial class TopCurrencyView : Page
     {
-        public TopCurView()
+        private readonly MainWindow_ViewModel _viewModel;
+        public TopCurrencyView()
         {
             InitializeComponent();
+
+            _viewModel = new MainWindow_ViewModel();
+
+            DataContext = _viewModel;
+            _viewModel.Initialize();
+        }
+
+        void ListView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var item = ((FrameworkElement)e.OriginalSource).DataContext as MainWindow_Model;
+            if (item != null)
+            {
+                MessageBox.Show("Item's Double Click handled!");
+            }
         }
     }
 }
