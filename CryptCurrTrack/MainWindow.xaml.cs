@@ -53,5 +53,13 @@ namespace CryptCurrTrack
             Main.Content = exchangeView;
             
         }
+
+        public void OpenCurrencyDetailWindow(string itemClickedRank)
+        {
+
+            MessageBox.Show("Item's Double Click handled!");
+        }
+
+        
     }
 }

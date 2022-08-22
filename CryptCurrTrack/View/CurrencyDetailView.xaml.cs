@@ -20,15 +20,15 @@ namespace CryptCurrTrack.View
     public partial class CurrencyDetailView : Page
     {
 
-        private readonly CurrencyDetail_ViewModel _viewModel;
+        private readonly CurrencyDetail_ViewModel viewModel;
         public CurrencyDetailView()
         {
             InitializeComponent();
 
-            _viewModel = new CurrencyDetail_ViewModel();
+            viewModel = new CurrencyDetail_ViewModel();
 
-            DataContext = _viewModel;
-            _viewModel.Initialize();
+            DataContext = viewModel;
+            viewModel.Initialize();
         }
     }
 }

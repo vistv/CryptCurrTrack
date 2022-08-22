@@ -17,6 +17,17 @@ namespace CryptCurrTrack.View
     public partial class TopCurrencyView : Page
     {
         private readonly MainWindow_ViewModel _viewModel;
+
+ //       public event EventHandler ListItemDoublecliked;
+
+ //       public string itemClickedRank;
+        //private void MakeListItemDoublecliked(EventArgs e)
+        //{
+        //    if (ListItemDoublecliked != null)
+        //    {
+        //        ListItemDoublecliked(this, e);
+        //    }
+        //}
         public TopCurrencyView()
         {
             InitializeComponent();
@@ -29,10 +40,10 @@ namespace CryptCurrTrack.View
 
         void ListView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            var item = ((FrameworkElement)e.OriginalSource).DataContext as MainWindow_Model;
-            if (item != null)
+            var itemClicked = ((FrameworkElement)e.OriginalSource).DataContext as MainWindow_Model;
+            if (itemClicked != null)
             {
-                MessageBox.Show("Item's Double Click handled!");
+                ((MainWindow)System.Windows.Application.Current.MainWindow).OpenCurrencyDetailWindow(itemClicked.Rank);
             }
         }
     }

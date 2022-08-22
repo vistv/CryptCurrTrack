@@ -10,7 +10,7 @@
 
     <Grid>
 
-        <ListView Name="CryptCurGrid" MouseDoubleClick="ListView_MouseDoubleClick" Grid.Row="0" Margin="250,96,250,41"  ItemsSource="{Binding CryptList}"  >
+        <!--<ListView Name="CryptCurGrid" MouseDoubleClick="ListView_MouseDoubleClick" Grid.Row="0" Margin="250,96,250,41"  ItemsSource="{Binding CryptList}"  >
             <ListView.View>
                 <GridView x:Name="grdTest">
                     <GridViewColumn Header="Rank" DisplayMemberBinding="{Binding Rank}"  Width="50"/>
@@ -18,6 +18,6 @@
                     <GridViewColumn Header="Full Name" DisplayMemberBinding="{Binding Name}" Width="120" />
                 </GridView>
             </ListView.View>
-        </ListView>
+        </ListView>-->
     </Grid>
 </Page>
