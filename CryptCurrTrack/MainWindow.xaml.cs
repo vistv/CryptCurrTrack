@@ -54,10 +54,10 @@ namespace CryptCurrTrack
             
         }
 
-        public void OpenCurrencyDetailWindow(string itemClickedRank)
+        public void OpenCurrencyDetailWindow(string itemClickedId)
         {
-
-            MessageBox.Show("Item's Double Click handled!");
+            Page currencyDetailView = new CurrencyDetailView(itemClickedId);
+            Main.Content = currencyDetailView;
         }
 
         

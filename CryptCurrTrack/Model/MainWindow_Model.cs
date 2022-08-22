@@ -4,10 +4,10 @@ using System.ComponentModel;
 using System.Text;
 
 // INotifyPropertyChanged notifies the View of property changes, so that Bindings are updated.
-namespace CryptCurrTrack
+namespace CryptCurrTrack.Model
 {
 
-    sealed class MainWindow_Model : INotifyPropertyChanged
+    sealed class MainWindow_Model : BaseModel 
     {
         private string rank;
         private string id;
@@ -83,11 +83,6 @@ namespace CryptCurrTrack
 
 
 
-        public event PropertyChangedEventHandler PropertyChanged;
 
-        void OnPropertyChange(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
     }
 }

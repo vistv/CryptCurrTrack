@@ -6,8 +6,11 @@ namespace CryptCurrTrack.ViewModel
 {
     class CurrencyDetail_ViewModel
     {
-
-
+        private string _currencyId;
+        public CurrencyDetail_ViewModel(string currencyId)
+        {
+            _currencyId = currencyId;
+        }
 
 
         public void Initialize() //async

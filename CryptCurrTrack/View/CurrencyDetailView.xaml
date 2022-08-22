@@ -9,15 +9,34 @@
       Title="CurrencyDetailView">
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="120"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        
+        <TextBlock Text="Cryptocurrency details:" FontSize="14" Grid.Row="0" HorizontalAlignment="Center" Margin="0,30,0,0"/>
 
-        <!--<ListView Name="CryptCurGrid" MouseDoubleClick="ListView_MouseDoubleClick" Grid.Row="0" Margin="250,96,250,41"  ItemsSource="{Binding CryptList}"  >
+        <ListView Name="CurrencyDetails" Grid.Row="1" Margin="180,10,180,60" ItemsSource="{Binding Details}">
             <ListView.View>
-                <GridView x:Name="grdTest">
-                    <GridViewColumn Header="Rank" DisplayMemberBinding="{Binding Rank}"  Width="50"/>
-                    <GridViewColumn Header="Id" DisplayMemberBinding="{Binding Id}"  Width="100" />
-                    <GridViewColumn Header="Full Name" DisplayMemberBinding="{Binding Name}" Width="120" />
+                <GridView x:Name="grdCurr">
+                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}"  Width="100"/>
+                    <GridViewColumn Header="Price" DisplayMemberBinding="{Binding Price}"  Width="100" />
+                    <GridViewColumn Header="Volume" DisplayMemberBinding="{Binding Volume}"  Width="100" />
+                    <GridViewColumn Header="Price change" DisplayMemberBinding="{Binding PriceChange}"  Width="140" />
+                    
                 </GridView>
             </ListView.View>
-        </ListView>-->
+        </ListView>
+
+        <ListView Name="MarketsPrices" Grid.Row="2" Margin="265,10,254,25" ItemsSource="{Binding Markets}"> 
+            <ListView.View>
+                <GridView x:Name="grdMark">
+                    <GridViewColumn Header="Market" DisplayMemberBinding="{Binding Rank}"  Width="100"/>
+                    <GridViewColumn Header="Price" DisplayMemberBinding="{Binding Id}"  Width="50" />
+                    
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 </Page>
