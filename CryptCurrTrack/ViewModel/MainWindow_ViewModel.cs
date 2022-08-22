@@ -11,7 +11,7 @@ namespace CryptCurrTrack
 
     class MainWindow_ViewModel
     {
-        private IList<MainWindow_Model> _CryptList;
+        private readonly IList<MainWindow_Model> _CryptList;
         private TopCurrenciesList topCurr;
         private const int listCount = 100;
 

@@ -41,10 +41,9 @@ namespace CryptCurrTrack.View
 
         void ListView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            var itemClicked = ((FrameworkElement)e.OriginalSource).DataContext as MainWindow_Model;
-            if (itemClicked != null)
+            if (((FrameworkElement)e.OriginalSource).DataContext as MainWindow_Model != null)
             {
-                ((MainWindow)System.Windows.Application.Current.MainWindow).OpenCurrencyDetailWindow(itemClicked.Rank, _viewModel.GetTopCurrenciesList());
+                ((MainWindow)System.Windows.Application.Current.MainWindow).OpenCurrencyDetailWindow((((FrameworkElement)e.OriginalSource).DataContext as MainWindow_Model).Rank, _viewModel.GetTopCurrenciesList());
             }
         }
     }

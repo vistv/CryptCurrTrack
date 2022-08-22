@@ -8,8 +8,8 @@ namespace CryptCurrTrack.Model
 {
     class CurrencyDetail_Model :BaseModel
     {
-        private ObservableCollection<CurrencyDetails> _currencyDetails;
-        private ObservableCollection<MarketPrices> _markets;
+        private readonly ObservableCollection<CurrencyDetails> _currencyDetails;
+        private readonly ObservableCollection<MarketPrices> _markets;
         
 
         public CurrencyDetail_Model()
@@ -45,15 +45,15 @@ namespace CryptCurrTrack.Model
 
     class CurrencyDetails
     {
-        public string Name;
-        public string Price;
-        public string Volume;
-        public string PriceChange;
+        public string Name { set; get;}
+        public string Price { set; get; }
+        public string Volume { set; get; }
+        public string PriceChange { set; get; }
     }
 
     class MarketPrices
     {
-        public string Market;
-        public string Price;
+        public string Market { set; get; }
+        public string Price { set; get; }
     }
 }
