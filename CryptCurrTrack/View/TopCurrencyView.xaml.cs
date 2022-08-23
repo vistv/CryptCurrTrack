@@ -40,13 +40,15 @@ namespace CryptCurrTrack.View
         private void OnSearchButton_Click(object sender, RoutedEventArgs e)
         {
             _viewModel.Search(SearchTextBox.Text);
+            GridLabel.Content = "Search results:";
         }
 
         private void OnClearButton_Click(object sender, RoutedEventArgs e)
         {
             SearchTextBox.Text = "";
            _viewModel.Clear();
-            
+            GridLabel.Content = "Top currencies top list:";
+
         }
 
 

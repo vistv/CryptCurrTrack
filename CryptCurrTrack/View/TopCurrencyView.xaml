@@ -13,6 +13,7 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
+            <RowDefinition Height="40"/>
             <RowDefinition />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -21,11 +22,13 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <TextBox Grid.Row="0" Grid.Column="0" Margin="10,10,10,10" x:Name="SearchTextBox"/>
-        <Button x:Name="Search"  Grid.Row="0" Grid.Column="1" Content="Search" Click="OnSearchButton_Click" Margin="10,10,10,10"/>
-        <Button  Grid.Row="0" Grid.Column="2"   Content="Clear search" Click="OnClearButton_Click" Margin="10,10,10,10"/>
+        <TextBox Grid.Row="0" Grid.Column="0" Margin="10,10,10,0" x:Name="SearchTextBox" Padding="10"/>
+        <Button x:Name="Search"  Grid.Row="0" Grid.Column="1" Content="Search" Click="OnSearchButton_Click" Margin="10,10,0,0" Width="80" HorizontalAlignment="Left"/>
+        <Button  Grid.Row="0" Grid.Column="1"   Content="Clear search" Click="OnClearButton_Click" Margin="50,10,10,0" Width="80"/>
 
-        <ListView x:Name="CryptCurGrid"  Grid.ColumnSpan="3" MouseDoubleClick="ListView_MouseDoubleClick" Grid.Row="1" Grid.Column="0" Margin="250,10,250,10"  ItemsSource="{Binding CurrencyShortDetail}"  >
+        <Label x:Name="GridLabel" Content="Top currencies top list:" Grid.Row="1" Grid.ColumnSpan="3" Margin="5"/>
+
+        <ListView x:Name="CryptCurGrid" ToolTip="Click on currency to view details" Grid.ColumnSpan="3" MouseUp="ListView_MouseDoubleClick" Grid.Row="2" Grid.Column="0" Margin="10,0,10,10"  ItemsSource="{Binding CurrencyShortDetail}"  >
             <ListView.View>
                 <GridView x:Name="grdTest">
                     <GridViewColumn Header="Rank" DisplayMemberBinding="{Binding Rank}"  Width="50"/>

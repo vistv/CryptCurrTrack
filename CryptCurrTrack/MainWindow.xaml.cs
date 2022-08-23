@@ -30,6 +30,7 @@ namespace CryptCurrTrack
             InitializeComponent();
             if (topCurrencyView == null) topCurrencyView = new TopCurrencyView();
             Main.Content = topCurrencyView;
+            MainButton.Visibility = Visibility.Collapsed;
         }
 
         private void ButtonMain_Click(object sender, RoutedEventArgs e)
@@ -37,6 +38,8 @@ namespace CryptCurrTrack
             
             if (topCurrencyView == null) topCurrencyView = new TopCurrencyView();
             Main.Content = topCurrencyView;
+            ExchangeButton.Visibility = Visibility.Visible;
+            MainButton.Visibility = Visibility.Collapsed;
         }
 
 
@@ -44,13 +47,17 @@ namespace CryptCurrTrack
         {
             if (exchangeView == null) exchangeView = new ExchangeView();
             Main.Content = exchangeView;
-            
+            MainButton.Visibility = Visibility.Visible;
+            ExchangeButton.Visibility = Visibility.Collapsed;
+
         }
 
         public void OpenCurrencyDetailWindow(string itemClickedRank, TopCurrenciesList currencyInfo)
         {
             Page currencyDetailView = new CurrencyDetailView(itemClickedRank, currencyInfo);
             Main.Content = currencyDetailView;
+            ExchangeButton.Visibility = Visibility.Visible;
+            MainButton.Visibility = Visibility.Visible;
         }
 
         

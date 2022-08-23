@@ -10,8 +10,8 @@
 
     <Grid>
         <StackPanel Orientation="Horizontal" Height="35" VerticalAlignment="Top">
-            <Button Content="Back to main Window" Width="150" Margin="10,0,0,0" Click="ButtonMain_Click"/>
-            <Button Content="Exchange" Width="150" Margin="10,0,0,0" Click="ButtonExchange_Click"/>
+            <Button x:Name="MainButton" Content="Back to main Window" Width="150" Margin="10,0,0,0" Click="ButtonMain_Click"/>
+            <Button x:Name="ExchangeButton" Content="Exchange" Width="150" Margin="10,0,0,0" Click="ButtonExchange_Click"/>
         </StackPanel>
         <Frame x:Name="Main" Margin="0,35,0,0" NavigationUIVisibility="Hidden"/>
     </Grid>
