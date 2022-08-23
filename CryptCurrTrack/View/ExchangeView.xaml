@@ -10,18 +10,34 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition />
-            <RowDefinition />
-            <RowDefinition />
-            <RowDefinition />
+            <RowDefinition Height="150"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
 
         </Grid.ColumnDefinitions>
-        <ComboBox x:Name="FirstCurrencyCombo" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" Width="120"/>
-        <ComboBox x:Name="SecondCurrencyCombo" HorizontalAlignment="Center" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Width="120"/>
+        <ComboBox Margin="10" ItemsSource="{Binding CurrencySymbols}" x:Name="FirstCurrencyCombo" HorizontalAlignment="Right" Grid.Row="1" VerticalAlignment="Center" Width="120">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Symbol}" />
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <ComboBox Margin="10" ItemsSource="{Binding CurrencySymbols}" x:Name="SecondCurrencyCombo" HorizontalAlignment="Left" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Width="120">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Symbol}" />
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <Button Margin="10"  Content="Convert" HorizontalAlignment="Center" Grid.Row="3" Grid.ColumnSpan="2" VerticalAlignment="Center" Height="50" Width="200" Click="Button_Click" />
+        <TextBox Margin="10" x:Name="AmountTextBox" HorizontalAlignment="Right"  Grid.Row="2" Text="0" TextWrapping="NoWrap" VerticalAlignment="Center" Width="120" TextAlignment="Center"/>
+        <TextBox Margin="10" x:Name="RezultLabel" Text="0" Grid.Column="1" HorizontalAlignment="Left"  Grid.Row="2" VerticalAlignment="Center"  Width="120" TextAlignment="Center" IsReadOnly="True"/>
+
     </Grid>
 
 

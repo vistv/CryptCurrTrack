@@ -1,6 +1,8 @@
-﻿using Newtonsoft.Json;
+﻿using CryptCurrTrack.Model;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 
 namespace CryptCurrTrack.ViewModel
@@ -11,11 +13,24 @@ namespace CryptCurrTrack.ViewModel
 
         private readonly List<CurrencyRate> sortedcurrencyRateList;
 
+        private readonly ExchangeModel exchangeModel;
+
         public Exchange_ViewModel()
         {
             sortedcurrencyRateList = new List<CurrencyRate>();
+
+            exchangeModel = new ExchangeModel();
         }
 
+  
+        public List<CurrencyRate> SortedcurrencyRateList
+        {
+            get { return sortedcurrencyRateList; }
+        }
+        public ObservableCollection<CurrencySymbol> CurrencySymbols
+        {
+            get { return exchangeModel.CurrencySymbols; }
+        }
 
         public async void Initialize()
         {
@@ -31,6 +46,12 @@ namespace CryptCurrTrack.ViewModel
             currencyRateList = JsonConvert.DeserializeObject<CurrencyRateList>(HttpInfor.responseBody);
 
             FillSortedCurrencyRateList();
+
+            for (int i = 0; i < sortedcurrencyRateList.Count; ++i)
+            {
+                exchangeModel.CurrencySymbols.Add(new CurrencySymbol { Symbol = sortedcurrencyRateList[i].Symbol });
+            }
+
 
         }
 
