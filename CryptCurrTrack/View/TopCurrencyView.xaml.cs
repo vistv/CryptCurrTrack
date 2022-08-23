@@ -46,6 +46,7 @@ namespace CryptCurrTrack.View
         {
             SearchTextBox.Text = "";
            _viewModel.Clear();
+            
         }
 
 

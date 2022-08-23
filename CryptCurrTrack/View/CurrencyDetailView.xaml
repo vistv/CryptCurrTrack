@@ -4,6 +4,8 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:CryptCurrTrack.View" 
+      xmlns:fc="clr-namespace:FancyCandles;assembly=FancyCandles"
+      xmlns:fci="clr-namespace:FancyCandles.Indicators;assembly=FancyCandles" 
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="CurrencyDetailView">
@@ -14,10 +16,14 @@
             <RowDefinition Height="120"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
 
-        <TextBlock Text="Cryptocurrency details:" FontSize="14" Grid.Row="0" HorizontalAlignment="Center" Margin="0,30,0,0"/>
+        <TextBlock Grid.ColumnSpan="2"  Text="Cryptocurrency details:" FontSize="14" Grid.Row="0" HorizontalAlignment="Center" Margin="0,30,0,0"/>
 
-        <ListView Name="CurrencyDetails" Grid.Row="1" Margin="160,10,160,35" ItemsSource="{Binding Details}" >
+        <ListView Grid.ColumnSpan="2" Name="CurrencyDetails" Grid.Row="1" Margin="160,10,160,35" ItemsSource="{Binding Details}" >
             <ListView.View>
                 <GridView x:Name="grdCurr">
                     <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}"  Width="100"/>
@@ -29,7 +35,7 @@
             </ListView.View>
         </ListView>
 
-        <ListView Name="MarketsPrices" Grid.Row="2" Margin="200,10,200,25" ItemsSource="{Binding Markets}">
+        <ListView Grid.Column="0" Name="MarketsPrices" Grid.Row="2" Margin="20" ItemsSource="{Binding Markets}">
             <ListView.View>
                 <GridView x:Name="grdMark">
                     <GridViewColumn Header="Market" DisplayMemberBinding="{Binding Market}"  Width="100"/>
@@ -38,5 +44,29 @@
                 </GridView>
             </ListView.View>
         </ListView>
+
+        <fc:CandleChart CandlesSource="{Binding Path=Candles}"
+                        VolumeBarWidthToCandleWidthRatio="0.5"
+                        ChartAreaBorderColor="IndianRed"
+                        Grid.Row="0">
+            <fc:CandleChart.OverlayIndicators>
+                <local:ObservableOverlayIndicatorCollection>
+                    <fci:SimpleMovingAverage N="7">
+                        <fci:SimpleMovingAverage.Pen>
+                            <Pen Thickness="1" Brush="Magenta" />
+                        </fci:SimpleMovingAverage.Pen>
+                    </fci:SimpleMovingAverage>
+
+                    <fci:ExponentialMovingAverage Smoothing="0.1">
+                        <fci:ExponentialMovingAverage.Pen>
+                            <Pen Thickness="1" Brush="Blue" />
+                        </fci:ExponentialMovingAverage.Pen>
+                    </fci:ExponentialMovingAverage>
+                </local:ObservableOverlayIndicatorCollection>
+            </fc:CandleChart.OverlayIndicators>
+        </fc:CandleChart>
+
+
+
     </Grid>
 </Page>
