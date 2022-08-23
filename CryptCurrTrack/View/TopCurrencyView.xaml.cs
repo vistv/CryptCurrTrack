@@ -43,8 +43,22 @@ namespace CryptCurrTrack.View
         {
             if (((FrameworkElement)e.OriginalSource).DataContext as MainWindow_Model != null)
             {
-                ((MainWindow)System.Windows.Application.Current.MainWindow).OpenCurrencyDetailWindow((((FrameworkElement)e.OriginalSource).DataContext as MainWindow_Model).Rank, _viewModel.GetTopCurrenciesList());
+                ((MainWindow)System.Windows.Application.Current.MainWindow).OpenCurrencyDetailWindow((((FrameworkElement)e.OriginalSource).DataContext as CurrencyShortDetails).Rank, _viewModel.GetTopCurrenciesList());
             }
         }
+
+        private void onSearchButton_Click(object sender, RoutedEventArgs e)
+        {
+            _viewModel.Search("");
+        }
+
+        private void onClearButton_Click(object sender, RoutedEventArgs e)
+        {
+           // _viewModel.Clear();
+        }
+
+
+
+
     }
 }

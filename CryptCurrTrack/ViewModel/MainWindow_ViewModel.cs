@@ -5,16 +5,19 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using CryptCurrTrack.Model;
+using System.Collections.ObjectModel;
 
 namespace CryptCurrTrack
 {
 
     class MainWindow_ViewModel
     {
-        private readonly IList<MainWindow_Model> _CryptList;
+        private readonly MainWindow_Model mainWindow_Model;
+
+    
         private TopCurrenciesList topCurr;
         private const int listCount = 100;
-
+        
         public TopCurrenciesList GetTopCurrenciesList()
         {
             return topCurr;
@@ -22,19 +25,17 @@ namespace CryptCurrTrack
 
         public MainWindow_ViewModel()
         {
-            _CryptList = new List<MainWindow_Model> { };
-
+            mainWindow_Model = new MainWindow_Model();
+ 
             topCurr = new TopCurrenciesList();
-  
-            for (int i = 0; i < listCount; i++)
-            _CryptList.Add(new MainWindow_Model { Rank = "", Id = "", Name = "" });
         }
 
-        public IList<MainWindow_Model> CryptList
+        public ObservableCollection<CurrencyShortDetails> CurrencyShortDetail
         {
-            get { return _CryptList; }
-   //         set { _CryptList = value; }
+            get { return mainWindow_Model.ShortDetails; }
+      
         }
+
 
         public async void Initialize()
         {
@@ -44,12 +45,25 @@ namespace CryptCurrTrack
 
             topCurr = JsonConvert.DeserializeObject<TopCurrenciesList>(HttpInfor.responseBody);
 
-            for (int i = 0; i < listCount; i++)
+            for (int i = 0; i < topCurr.Currency.Count; ++i)
             {
-                _CryptList[i].Rank = topCurr.Currency[i].Rank;
-                _CryptList[i].Id = topCurr.Currency[i].Id;
-                _CryptList[i].Name = topCurr.Currency[i].Name;
+                mainWindow_Model.ShortDetails.Add(new CurrencyShortDetails
+                {
+                    Name = topCurr.Currency[i].Name,
+                    Id = topCurr.Currency[i].Id,
+                    Rank = topCurr.Currency[i].Rank
+                });
             }
+        }
+
+        public async void Search(string query)
+        {
+            await HttpInfor.GetHttpData("https://api.coincap.io/v2/assets?search=" + query);
+
+            if (HttpInfor.responseBody.Contains("Exception Caught!")) return;
+
+            topCurr = JsonConvert.DeserializeObject<TopCurrenciesList>(HttpInfor.responseBody);
+
         }
     }
 }

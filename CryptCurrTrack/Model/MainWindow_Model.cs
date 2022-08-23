@@ -1,88 +1,58 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Text;
 
-// INotifyPropertyChanged notifies the View of property changes, so that Bindings are updated.
+
 namespace CryptCurrTrack.Model
 {
 
     sealed class MainWindow_Model : BaseModel 
     {
-        private string rank;
-        private string id;
-        private string name;
+        private readonly ObservableCollection<CurrencyShortDetails> _currencyShortDetails;
 
-        public string Rank
+        private string query;
+
+        public string Query
         {
-            get { return rank; }
+            get { return query; }
             set
             {
-                if (rank != value)
+                if (query != value)
                 {
-                    rank = value;
-                    OnPropertyChange("Rank");
-                }
-            }
-        }
-
-        public string Id
-        {
-            get { return id; }
-            set
-            {
-                if (id != value)
-                {
-                    id = value;
-                    OnPropertyChange("Id");
+                    query = value;
+                    OnPropertyChange("Query");
                 }
             }
         }
 
 
-        public string Name
+        public MainWindow_Model()
         {
-            get { return name; }
-            set
-            {
-                if (name != value)
-                {
-                    name = value;
-                    OnPropertyChange("Name");
-                }
-            }
+            _currencyShortDetails = new ObservableCollection<CurrencyShortDetails>();
+            _currencyShortDetails.CollectionChanged += ShortDetails_CollectionChanged;
+
         }
 
-        //public string LastName
-        //{
-        //    get { return user.LastName; }
-        //    set
-        //    {
-        //        if (user.LastName != value)
-        //        {
-        //            user.LastName = value;
-        //            OnPropertyChange("LastName");
-        //            // If the first name has changed, the FullName property needs to be udpated as well.
-        //            OnPropertyChange("FullName");
-        //        }
-        //    }
-        //}
+        private void ShortDetails_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            OnPropertyChange("Details");
+        }
 
-        //// This property is an example of how model properties can be presented differently to the View.
-        //// In this case, we transform the birth date to the user's age, which is read only.
-        //public int Age
-        //{
-        //    get
-        //    {
-        //        DateTime today = DateTime.Today;
-        //        int age = today.Year - user.BirthDate.Year;
-        //        if (user.BirthDate > today.AddYears(-age)) age--;
-        //        return age;
-        //    }
-        //}
-
-
-
+        public ObservableCollection<CurrencyShortDetails> ShortDetails
+        {
+            get { return _currencyShortDetails; }
+        }
 
     }
+}
+
+class CurrencyShortDetails
+{
+    public string Name { set; get; }
+    public string Id { set; get; }
+    public string Rank { set; get; }
+ 
 }

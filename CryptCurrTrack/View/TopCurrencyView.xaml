@@ -8,9 +8,26 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="TopCurView">
 
-    <Grid>
 
-        <ListView Name="CryptCurGrid" MouseDoubleClick="ListView_MouseDoubleClick" Grid.Row="0" Margin="250,96,250,41"  ItemsSource="{Binding CryptList}"  >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+
+        <TextBox Grid.Row="1" Margin="190,0,428,375" Text="{Binding Query}">
+
+        </TextBox>
+        <Button Name="Search" Margin="389,5,332,362" Grid.Row="1" Content="Search" Click="onSearchButton_Click" >
+         </Button>
+
+
+        <Button Margin="525,5,196,362" Grid.Row="1" Content="onClearButton_Click" >
+        </Button>
+
+
+        <ListView Name="CryptCurGrid"  MouseDoubleClick="ListView_MouseDoubleClick" Grid.Row="1" Margin="250,96,250,41"  ItemsSource="{Binding CurrencyShortDetail}"  >
             <ListView.View>
                 <GridView x:Name="grdTest">
                     <GridViewColumn Header="Rank" DisplayMemberBinding="{Binding Rank}"  Width="50"/>
@@ -20,6 +37,7 @@
             </ListView.View>
         </ListView>
     </Grid>
+
 </Page>
 
 
