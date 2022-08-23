@@ -14,10 +14,11 @@ namespace CryptCurrTrack
     {
         private readonly MainWindow_Model mainWindow_Model;
 
-    
+        private readonly List<CurrencyShortDetails> copyTopCurrenciesList;
+
         private TopCurrenciesList topCurr;
         private const int listCount = 100;
-        
+
         public TopCurrenciesList GetTopCurrenciesList()
         {
             return topCurr;
@@ -26,14 +27,16 @@ namespace CryptCurrTrack
         public MainWindow_ViewModel()
         {
             mainWindow_Model = new MainWindow_Model();
- 
+
             topCurr = new TopCurrenciesList();
+
+            copyTopCurrenciesList = new List<CurrencyShortDetails>();
         }
 
         public ObservableCollection<CurrencyShortDetails> CurrencyShortDetail
         {
             get { return mainWindow_Model.ShortDetails; }
-      
+
         }
 
 
@@ -53,16 +56,43 @@ namespace CryptCurrTrack
                     Id = topCurr.Currency[i].Id,
                     Rank = topCurr.Currency[i].Rank
                 });
+
+                copyTopCurrenciesList.Add(mainWindow_Model.ShortDetails[i]);
+
             }
         }
 
         public async void Search(string query)
         {
+
+
             await HttpInfor.GetHttpData("https://api.coincap.io/v2/assets?search=" + query);
 
             if (HttpInfor.responseBody.Contains("Exception Caught!")) return;
 
             topCurr = JsonConvert.DeserializeObject<TopCurrenciesList>(HttpInfor.responseBody);
+
+            mainWindow_Model.ShortDetails.Clear();
+
+            for (int i = 0; i < topCurr.Currency.Count; ++i)
+            {
+                mainWindow_Model.ShortDetails.Add(new CurrencyShortDetails
+                {
+                    Name = topCurr.Currency[i].Name,
+                    Id = topCurr.Currency[i].Id,
+                    Rank = topCurr.Currency[i].Rank
+                });
+            }
+        }
+
+        public void Clear()
+        {
+            mainWindow_Model.ShortDetails.Clear();
+
+            for (int i = 0; i < copyTopCurrenciesList.Count; ++i)
+            {
+                mainWindow_Model.ShortDetails.Add(copyTopCurrenciesList[i]);
+            }
 
         }
     }

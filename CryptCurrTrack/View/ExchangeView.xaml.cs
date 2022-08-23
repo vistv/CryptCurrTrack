@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CryptCurrTrack.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -18,9 +19,20 @@ namespace CryptCurrTrack.View
     /// </summary>
     public partial class ExchangeView : Page
     {
+
+        private readonly Exchange_ViewModel viewModel;
+
         public ExchangeView()
         {
             InitializeComponent();
+
+            viewModel = new Exchange_ViewModel();
+
+            DataContext = viewModel;
+            viewModel.Initialize();
+
+
+
         }
     }
 }

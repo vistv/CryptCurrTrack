@@ -23,7 +23,7 @@ namespace CryptCurrTrack
     {
 
         private Page topCurrencyView;
-        private Page searchView;
+        
         private Page exchangeView;
         public MainWindow()
         {
@@ -39,13 +39,6 @@ namespace CryptCurrTrack
             Main.Content = topCurrencyView;
         }
 
-        private void ButtonSearch_Click(object sender, RoutedEventArgs e)
-        {
-
-            if (searchView == null) searchView = new SearchView();
-            Main.Content = searchView;
-            
-        }
 
         private void ButtonExchange_Click(object sender, RoutedEventArgs e)
         {

@@ -13,7 +13,7 @@ namespace CryptCurrTrack.Model
     {
         private readonly ObservableCollection<CurrencyShortDetails> _currencyShortDetails;
 
-        private string query;
+        private string query = "USD";
 
         public string Query
         {

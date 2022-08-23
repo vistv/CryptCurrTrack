@@ -9,6 +9,21 @@
       Title="ExchangeView">
 
     <Grid>
-        <TextBlock Text="Exchange" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+
+        </Grid.ColumnDefinitions>
+        <ComboBox x:Name="FirstCurrencyCombo" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" Width="120"/>
+        <ComboBox x:Name="SecondCurrencyCombo" HorizontalAlignment="Center" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Width="120"/>
     </Grid>
+
+
+
 </Page>

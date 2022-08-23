@@ -19,16 +19,6 @@ namespace CryptCurrTrack.View
     {
         private readonly MainWindow_ViewModel _viewModel;
 
- //       public event EventHandler ListItemDoublecliked;
-
- //       public string itemClickedRank;
-        //private void MakeListItemDoublecliked(EventArgs e)
-        //{
-        //    if (ListItemDoublecliked != null)
-        //    {
-        //        ListItemDoublecliked(this, e);
-        //    }
-        //}
         public TopCurrencyView()
         {
             InitializeComponent();
@@ -41,23 +31,22 @@ namespace CryptCurrTrack.View
 
         void ListView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            if (((FrameworkElement)e.OriginalSource).DataContext as MainWindow_Model != null)
+            if (((FrameworkElement)e.OriginalSource).DataContext as CurrencyShortDetails != null)
             {
                 ((MainWindow)System.Windows.Application.Current.MainWindow).OpenCurrencyDetailWindow((((FrameworkElement)e.OriginalSource).DataContext as CurrencyShortDetails).Rank, _viewModel.GetTopCurrenciesList());
             }
         }
 
-        private void onSearchButton_Click(object sender, RoutedEventArgs e)
+        private void OnSearchButton_Click(object sender, RoutedEventArgs e)
         {
-            _viewModel.Search("");
+            _viewModel.Search(SearchTextBox.Text);
         }
 
-        private void onClearButton_Click(object sender, RoutedEventArgs e)
+        private void OnClearButton_Click(object sender, RoutedEventArgs e)
         {
-           // _viewModel.Clear();
+            SearchTextBox.Text = "";
+           _viewModel.Clear();
         }
-
-
 
 
     }

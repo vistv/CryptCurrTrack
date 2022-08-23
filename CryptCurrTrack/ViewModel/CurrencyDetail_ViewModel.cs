@@ -14,9 +14,21 @@ namespace CryptCurrTrack.ViewModel
         private MarketPriceList marketPriceList;
         public CurrencyDetail_ViewModel(string currencyRank, TopCurrenciesList topCurrenciesList)
         {
-            _currency = topCurrenciesList.Currency[int.Parse(currencyRank)-1];
+
+            int index = 0;
+
+            for (int i = 0; i < topCurrenciesList.Currency.Count; ++i)
+            {
+                if (topCurrenciesList.Currency[i].Rank == currencyRank)
+                {
+                    index = i;
+                }
+            }
+
+
+            _currency = topCurrenciesList.Currency[index];
             currencyDetail_Model = new CurrencyDetail_Model();
-            //Initialize();
+            
         }
 
 
@@ -43,7 +55,7 @@ namespace CryptCurrTrack.ViewModel
                 PriceChange = _currency.ChangePercent24Hr.Substring(0, 13),
                 Volume = _currency.VolumeUsd24Hr.Substring(0,13) });
 
-            await HttpInfor.GetHttpData("https://api.coincap.io/v2/markets?quoteSymbol=USD&baseSymbol=" + _currency.Symbol);
+            await HttpInfor.GetHttpData("https://api.coincap.io/v2/markets?baseSymbol=" + _currency.Symbol);
 
             if (HttpInfor.responseBody.Contains("Exception Caught!"))
             {
@@ -57,7 +69,8 @@ namespace CryptCurrTrack.ViewModel
                 currencyDetail_Model.Markets.Add(new MarketPrices
                 {
                     Market = marketPriceList.MarketPrices[i].ExchangeId,
-                    Price = marketPriceList.MarketPrices[i].PriceUsd.Substring(0, 13)
+                    Price = marketPriceList.MarketPrices[i].PriceQuote.Substring(0, 13),
+                    Units = marketPriceList.MarketPrices[i].QuoteSymbol
                 });
             }
         }

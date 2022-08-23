@@ -29,12 +29,12 @@
             </ListView.View>
         </ListView>
 
-        <ListView Name="MarketsPrices" Grid.Row="2" Margin="265,10,254,25" ItemsSource="{Binding Markets}">
+        <ListView Name="MarketsPrices" Grid.Row="2" Margin="200,10,200,25" ItemsSource="{Binding Markets}">
             <ListView.View>
                 <GridView x:Name="grdMark">
                     <GridViewColumn Header="Market" DisplayMemberBinding="{Binding Market}"  Width="100"/>
                     <GridViewColumn Header="Price" DisplayMemberBinding="{Binding Price}"  Width="150" />
-
+                    <GridViewColumn Header="Units" DisplayMemberBinding="{Binding Units}"  Width="100" />
                 </GridView>
             </ListView.View>
         </ListView>

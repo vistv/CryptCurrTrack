@@ -55,5 +55,6 @@ namespace CryptCurrTrack.Model
     {
         public string Market { set; get; }
         public string Price { set; get; }
+        public string Units { set; get; }
     }
 }
